@@ -4,13 +4,14 @@ import { useState, useEffect } from "react";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 
+import "./App.css";
 import Routing from "./Routing";
 import Loader from "./components/Loader";
 import theme from "./assets/theme";
 import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);

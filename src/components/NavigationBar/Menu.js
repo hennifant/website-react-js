@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import { NavLink } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import { motion } from "framer-motion";
 import { Tab, Tabs } from "@material-ui/core";
@@ -9,8 +8,8 @@ const container = {
   hidden: {},
   visible: {
     transition: {
-      delayChildren: 0.5,
-      staggerChildren: 0.3,
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
     },
   },
 };
@@ -25,7 +24,7 @@ const button = {
 
 const Menu = () => {
   const classes = useStyles();
-  const [value, setValue] = useState(2);
+  const [value, setValue] = useState(null);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -58,7 +57,6 @@ const Menu = () => {
           color="primary"
           exact
           className={classes.navMenuItem}
-          activeClassName={classes.active}
         >
           Resume
         </Button>

@@ -1,32 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { makeStyles } from "@material-ui/core/styles";
 
 const Background = () => {
   const classes = useStyles();
+  const [delay, setDelay] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setDelay(true);
+    }, 3000);
+  }, []);
   return (
-    <motion.div
-      initial={{ y: "-100vh" }}
-      animate={{ y: 0 }}
-      transition={{
-        delay: 3,
-        type: "spring",
-        stiffness: 260,
-        damping: 20,
-      }}
-      className={classes.wrapper}
-    >
-      <div className={classes.container}>
-        <iframe
-          title="background"
-          src=""
-          frameborder="0"
-          width="100%"
-          height="100%"
-        ></iframe>
-        <div className={classes.hideLogo} />
-      </div>
-    </motion.div>
+    <>
+      {delay && (
+        <motion.div
+          initial={{ y: "-100vh" }}
+          animate={{ y: 0 }}
+          transition={{
+            delay: 3,
+            type: "spring",
+            stiffness: 260,
+            damping: 20,
+          }}
+          className={classes.wrapper}
+        >
+          <div className={classes.container}>
+            <iframe
+              title="background"
+              src=""
+              frameborder="0"
+              width="100%"
+              height="100%"
+            ></iframe>
+            <div className={classes.hideLogo} />
+          </div>
+        </motion.div>
+      )}
+    </>
   );
 };
 

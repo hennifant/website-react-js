@@ -3,14 +3,15 @@ import { Routes, Route } from "react-router-dom";
 import MainHome from "./pages/MainHome";
 import NavigationBar from "./components/NavigationBar";
 import Footer from "./components/Footer";
-import Typography from "@material-ui/core/Typography";
+import Social from "./components/Social";
 
 const Routing = () => {
   return (
     <>
       <NavigationBar />
+      <Social />
       <Routes>
-        <Route exact="" path="/" component={MainHome} />
+        <Route path="/" component={MainHome} />
       </Routes>
       <Footer />
     </>

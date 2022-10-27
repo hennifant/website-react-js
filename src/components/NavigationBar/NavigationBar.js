@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Logo from "./Logo";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -7,10 +7,15 @@ import Menu from "./Menu";
 import { motion } from "framer-motion";
 
 const NavigationBar = () => {
+  const theme = useTheme();
   const [scroll, setScroll] = useState(false);
   const classes = useStyles({ scroll });
   const handleNav = () => setScroll(window.scrollY > 30);
   window.addEventListener("scroll", handleNav);
+  const appBarVariants = {
+    initial: { height: 100, boxShadow: theme.shadows[0] },
+    scrolled: { height: 70, boxShadow: theme.shadows[10] },
+  };
 
   return (
     <motion.div
@@ -29,7 +34,17 @@ const NavigationBar = () => {
         className={classes.navbar}
         component="nav"
       >
-        <Toolbar className={classes.toolbar}>
+        <Toolbar
+          className={classes.toolbar}
+          component={motion.div}
+          variants={appBarVariants}
+          animate={scroll ? "scrolled" : "initial"}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 20,
+          }}
+        >
           <Logo className={classes.logo} />
           <Menu />
         </Toolbar>
@@ -43,15 +58,10 @@ const useStyles = makeStyles((theme) => ({
     width: "150px",
   },
   navbar: {
-    padding: theme.spacing(0, 3),
     backgroundColor: theme.palette.background.default,
-    transition: ".4s",
-    boxShadow: (props) => (props.scroll ? theme.shadows[10] : theme.shadows[0]),
   },
   toolbar: {
-    height: (props) => (props.scroll ? "70px" : "100px"),
     justifyContent: "space-between",
-    transition: ".4s",
   },
 }));
 

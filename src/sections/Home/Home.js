@@ -3,12 +3,18 @@ import SectionContainer from "../../containers/SectionContainer";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { motion } from "framer-motion";
-import { makeStyles } from "@material-ui/core";
+// import { makeStyles } from "@material-ui/core";
 
 const Home = () => {
-  const classes = useStyles();
   return (
     <SectionContainer>
+      <Typography
+        component={motion.p}
+        ini
+        color="primary"
+        variant="h5"
+        style={{ marginBottom: "6px" }}
+      />
       <Typography color="primary" variant="h5" style={{ marginBottom: "6px" }}>
         Hi there
         <motion.div
@@ -39,10 +45,10 @@ const Home = () => {
     </SectionContainer>
   );
 };
-const useStyles = makeStyles((theme) => ({
-  typo: {
-    marginBottom: theme.spacing(2),
-  },
-}));
+//const useStyles = makeStyles((theme) => ({
+//  typo: {
+//    marginBottom: theme.spacing(2),
+//  },
+// }));
 
 export default Home;

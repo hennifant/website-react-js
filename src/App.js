@@ -11,7 +11,7 @@ import theme from "./assets/theme";
 import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);

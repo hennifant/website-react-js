@@ -1,9 +1,7 @@
 import React from "react";
-import SectionContainer from "../../containers/SectionContainer";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
+import HomeContainer from "../../containers/HomeContainer";
+import { Button, Typography } from "@material-ui/core";
 import { motion } from "framer-motion";
-// import { makeStyles } from "@material-ui/core";
 
 const container = {
   hidden: {},
@@ -25,7 +23,7 @@ const typo = {
 
 const Home = () => {
   return (
-    <SectionContainer full>
+    <HomeContainer>
       <motion.div variants={container} initial="hidden" animate="visible">
         <Typography
           component={motion.p}
@@ -72,13 +70,8 @@ const Home = () => {
           Get in touch
         </Button>
       </motion.div>
-    </SectionContainer>
+    </HomeContainer>
   );
 };
-//const useStyles = makeStyles((theme) => ({
-//  typo: {
-//    marginBottom: theme.spacing(2),
-//  },
-// }));
 
 export default Home;

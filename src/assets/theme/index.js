@@ -1,11 +1,10 @@
-import { createTheme, colors } from "@material-ui/core";
-import shadows from "./shadows";
+import { createTheme } from "@material-ui/core";
 import typography from "./typography";
 
 const theme = createTheme({
   palette: {
     background: {
-      default: "#082032 ",
+      default: "#1A1A1A",
     },
     primary: {
       main: "#FF4C29",

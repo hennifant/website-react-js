@@ -9,9 +9,10 @@ const Divider = ({ fullWidth, width, ...rest }) => {
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "inline",
-    minWidth: "50px",
+    minWidth: "100px",
     width: (props) => (props.fullWidth ? "100%" : props.width),
     height: "1px",
+    backgroundColor: "red",
   },
 }));
 

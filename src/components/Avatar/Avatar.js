@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "50%",
     height: "270px",
     objectFit: "cover",
-    boxShadow: theme.shadows[7],
+    boxShadow: theme.shadows[10],
   },
 }));
 

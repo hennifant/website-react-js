@@ -1,6 +1,6 @@
 import React from "react";
 import { Typography } from "@material-ui/core";
-import SectionContainer from "../../containers/SectionContainer";
+import SectionContainer from "../../containers/SectionContainer.js";
 
 const Projects = () => {
   return (

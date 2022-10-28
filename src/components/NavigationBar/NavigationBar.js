@@ -14,7 +14,7 @@ const NavigationBar = () => {
   window.addEventListener("scroll", handleNav);
   const appBarVariants = {
     initial: { height: 100, boxShadow: theme.shadows[0] },
-    scrolled: { height: 70, boxShadow: theme.shadows[10] },
+    scrolled: { height: theme.navbarHeight, boxShadow: theme.shadows[10] },
   };
 
   return (

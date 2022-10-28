@@ -5,17 +5,17 @@ import NavigationBar from "./components/NavigationBar";
 import Footer from "./components/Footer";
 import Social from "./components/Social";
 
-const Routing = () => {
+const Router = () => {
   return (
     <>
       <NavigationBar />
       <Social />
       <Routes>
-        <Route path="/" component={MainHome} />
+        <Route path="/" element={<MainHome />} />
       </Routes>
       <Footer />
     </>
   );
 };
 
-export default Routing;
+export default Router;

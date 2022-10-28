@@ -24,7 +24,7 @@ const button = {
 
 const Menu = () => {
   const classes = useStyles();
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -38,7 +38,7 @@ const Menu = () => {
       <StyledTabs
         value={value}
         indicatorColor="primary"
-        textColor="primary"
+        textcolor="primary"
         onChange={handleChange}
         aria-label="disabled tabs example"
       >
@@ -55,7 +55,7 @@ const Menu = () => {
           variants={button}
           variant="outlined"
           color="primary"
-          exact
+          exact="true"
           className={classes.navMenuItem}
         >
           Resume

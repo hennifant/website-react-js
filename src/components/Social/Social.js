@@ -1,10 +1,8 @@
 import React from "react";
 import { Link, makeStyles } from "@material-ui/core";
 import { motion } from "framer-motion";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import InstagramIcon from "@material-ui/icons/Instagram";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import EmailIcon from "@material-ui/icons/Email";
+import { LinkedIn, Instagram, GitHub, Email } from "@material-ui/icons";
+import IconBtn from "../IconBtn";
 
 const Social = () => {
   const classes = useStyles();
@@ -15,18 +13,15 @@ const Social = () => {
       transition={{ delay: 3 }}
       className={classes.wrapper}
     >
-      <Link href="https://github.com/hennifant" target="_blank">
-        <GitHubIcon className={classes.socialIcon} />
-      </Link>
-      <Link href="https://www.instagram.com/hennifantus" target="_blank">
-        <InstagramIcon className={classes.socialIcon} />
-      </Link>
-      <Link href="https://www.linkedin.com/" target="_blank">
-        <LinkedInIcon className={classes.socialIcon} />
-      </Link>
-      <Link href="mailto:hennifantus@gmail.com">
-        <EmailIcon className={classes.socialIcon} />
-      </Link>
+      <IconBtn icon={GitHub} m={1} href="https://github.com/hennifant" />
+      <IconBtn
+        icon={Instagram}
+        m={1}
+        href="https://www.instagram.com/hennifantus/"
+      />
+
+      <IconBtn icon={LinkedIn} m={1} href="https://www.linkedin.com/" />
+      <IconBtn icon={Email} m={1} href="mailto:hennifantus@gmail.com" />
     </motion.div>
   );
 };
@@ -39,14 +34,6 @@ const useStyles = makeStyles((theme) => ({
     bottom: 0,
     right: 0,
     padding: theme.spacing(2),
-  },
-  socialIcon: {
-    margin: theme.spacing(1, 0),
-    color: theme.palette.text.secondary,
-    fontSize: "30px",
-    "&:hover": {
-      color: theme.palette.text.primary,
-    },
   },
 }));
 

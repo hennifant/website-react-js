@@ -54,4 +54,23 @@ const projectList = [
       "https://ltheme.com/wp-content/uploads/2018/05/et-fashion-free-responsive-joomla-template.png",
   },
 ];
-export { AboutDesc, skillsList, projectList };
+
+const experienceList = [
+  {
+    id: 0,
+    company: "abc",
+    job: "def",
+    overview: " ghi",
+    links: {
+      website: "https://www.google.com",
+      facebook: "https://www.facebook.com/",
+      instagram: "https://www.instagram.com",
+    },
+    duration: {
+      from: "date",
+      to: "now",
+    },
+  },
+];
+
+export { AboutDesc, skillsList, projectList, experienceList };

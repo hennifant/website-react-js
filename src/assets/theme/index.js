@@ -18,6 +18,10 @@ const theme = createTheme({
       primary: "#FFF",
       secondary: "rgb(220,220,220)",
     },
+    action: {
+      disabled: "rgb(70,70,70)",
+      disabledBackground: "rgb(150,150,150)",
+    },
   },
   navbarHeight: "70px",
   typography,

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles, Container, Typography } from "@material-ui/core";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -10,8 +10,10 @@ const SectionContainer = ({
   full,
   reverse,
   title,
+  padding,
   ...rest
 }) => {
+  const classes = useStyles({ full, maxWidth, padding });
   const titleControls = useAnimation();
   const contentControls = useAnimation();
   const [titleRef, titleInView] = useInView();
@@ -25,11 +27,11 @@ const SectionContainer = ({
 
   useEffect(() => {
     if (contentInView) {
+      // setContentStart(true)
       contentControls.start("visible");
     }
   }, [contentControls, contentInView]);
 
-  const classes = useStyles({ full, maxWidth });
   return (
     <Container component="section" className={classes.container} {...rest}>
       {title && (
@@ -66,8 +68,6 @@ const SectionContainer = ({
           stiffness: 100,
           damping: 20,
           when: "beforeChildren",
-          duration: 0.5,
-          staggerChildren: 0.3,
         }}
         variants={{
           visible: { opacity: 1, y: 0 },
@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     maxWidth: (props) =>
       props.maxWidth ? `${props.maxWidth}px` : theme.breakpoints.values["lg"],
-    padding: "80px 0",
+    padding: (props) => (props.padding ? `${props.padding}px 0` : "80px 0"),
   },
   titleContainer: {
     paddingBottom: theme.spacing(8, 0),

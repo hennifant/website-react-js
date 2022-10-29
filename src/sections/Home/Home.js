@@ -23,7 +23,7 @@ const typo = {
 
 const Home = () => {
   return (
-    <HomeContainer>
+    <HomeContainer id="home">
       <motion.div variants={container} initial="hidden" animate="visible">
         <Typography
           component={motion.p}

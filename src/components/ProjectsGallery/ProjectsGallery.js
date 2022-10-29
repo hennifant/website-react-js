@@ -9,6 +9,7 @@ import { useInView } from "react-intersection-observer";
 import { ImageList, ImageListItem, makeStyles } from "@material-ui/core";
 import Card from "./Card";
 import ExtendedCard from "./ExtendedCard";
+import { projectList } from "../../data";
 
 const ProjectsGallery = () => {
   const classes = useStyles();
@@ -67,7 +68,7 @@ const ProjectsGallery = () => {
       galleryControls.start("visible");
     }
   }, [galleryControls, galleryInView]);
-  const getSelected = (id) => projects.find((elem) => elem.id === id);
+  const getSelected = (id) => projectList.find((elem) => elem.id === id);
   return (
     <AnimateSharedLayout type="crossfade">
       <ImageList
@@ -76,7 +77,7 @@ const ProjectsGallery = () => {
         gap={20}
         className={classes.galleryContainer}
       >
-        {projects.map((item, k) => (
+        {projectList.map((item, k) => (
           <ImageListItem
             key={item.id}
             layoutId={item.id}

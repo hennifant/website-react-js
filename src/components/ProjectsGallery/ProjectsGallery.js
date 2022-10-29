@@ -14,52 +14,6 @@ import { projectList } from "../../data";
 const ProjectsGallery = () => {
   const classes = useStyles();
   const [selectedId, setSelectedId] = useState(null);
-  const projects = [
-    {
-      id: 1,
-      title: "One",
-      overview:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita incidunt ab recusandae minus sequi. Nostrum debitis aliquam et recusandae ducimus.",
-      technologies: ["React JS", "Node JS", "MongoDB"],
-      backgroundImage:
-        "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/wizard-bg.jpg",
-      frontImage:
-        "https://ltheme.com/wp-content/uploads/2018/05/et-fashion-free-responsive-joomla-template.png",
-    },
-    {
-      id: 2,
-      title: "Two",
-      overview:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita incidunt ab recusandae minus sequi. Nostrum debitis aliquam et recusandae ducimus.",
-      technologies: ["React JS", "Node JS", "MongoDB"],
-      backgroundImage:
-        "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/wizard-bg.jpg",
-      frontImage:
-        "https://ltheme.com/wp-content/uploads/2018/05/et-fashion-free-responsive-joomla-template.png",
-    },
-    {
-      id: 3,
-      title: "Three",
-      overview:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita incidunt ab recusandae minus sequi. Nostrum debitis aliquam et recusandae ducimus.",
-      technologies: ["React JS", "Node JS", "MongoDB"],
-      backgroundImage:
-        "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/wizard-bg.jpg",
-      frontImage:
-        "https://ltheme.com/wp-content/uploads/2018/05/et-fashion-free-responsive-joomla-template.png",
-    },
-    {
-      id: 4,
-      title: "Four",
-      overview:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita incidunt ab recusandae minus sequi. Nostrum debitis aliquam et recusandae ducimus.",
-      technologies: ["React JS", "Node JS", "MongoDB"],
-      backgroundImage:
-        "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/wizard-bg.jpg",
-      frontImage:
-        "https://ltheme.com/wp-content/uploads/2018/05/et-fashion-free-responsive-joomla-template.png",
-    },
-  ];
   const galleryControls = useAnimation();
   const [galleryRef, galleryInView] = useInView();
 
@@ -74,7 +28,7 @@ const ProjectsGallery = () => {
       <ImageList
         rowHeight={400}
         cols={3}
-        gap={20}
+        gap={60}
         className={classes.galleryContainer}
       >
         {projectList.map((item, k) => (

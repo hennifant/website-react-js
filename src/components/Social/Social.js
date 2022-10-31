@@ -2,7 +2,7 @@ import React from "react";
 import { Link, makeStyles } from "@material-ui/core";
 import { motion } from "framer-motion";
 import { LinkedIn, Instagram, GitHub, Email } from "@material-ui/icons";
-import IconBtn from "../IconBtn";
+import IconButton from "../IconButton";
 
 const Social = () => {
   const classes = useStyles();
@@ -13,15 +13,15 @@ const Social = () => {
       transition={{ delay: 3 }}
       className={classes.wrapper}
     >
-      <IconBtn icon={GitHub} m={1} href="https://github.com/hennifant" />
-      <IconBtn
+      <IconButton icon={GitHub} m={1} href="https://github.com/hennifant" />
+      <IconButton
         icon={Instagram}
         m={1}
         href="https://www.instagram.com/hennifantus/"
       />
 
-      <IconBtn icon={LinkedIn} m={1} href="https://www.linkedin.com/" />
-      <IconBtn icon={Email} m={1} href="mailto:hennifantus@gmail.com" />
+      <IconButton icon={LinkedIn} m={1} href="https://www.linkedin.com/" />
+      <IconButton icon={Email} m={1} href="mailto:hennifantus@gmail.com" />
     </motion.div>
   );
 };

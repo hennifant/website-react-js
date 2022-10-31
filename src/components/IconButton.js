@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Link, makeStyles } from "@material-ui/core";
 import { motion } from "framer-motion";
 
-const IconBtn = ({ icon: Icon, href, fontSize, ...rest }) => {
+const IconButton = ({ icon: Icon, href, fontSize, ...rest }) => {
   const classes = useStyles({ fontSize });
   return (
     <Box
@@ -30,4 +30,4 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default IconBtn;
+export default IconButton;

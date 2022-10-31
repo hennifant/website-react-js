@@ -18,7 +18,8 @@ const projectList = [
     technologies: ["React JS", "Node JS", "MongoDB"],
     backgroundImage:
       "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/wizard-bg.jpg",
-    frontImage: "https://i.ibb.co/jhCZB43/logo-9cf7f5b7.png",
+    frontImage:
+      "https://ltheme.com/wp-content/uploads/2018/05/et-fashion-free-responsive-joomla-template.png",
   },
   {
     id: 2,

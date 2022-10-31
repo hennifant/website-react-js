@@ -8,18 +8,10 @@ import {
   ButtonGroup,
   Link,
 } from "@material-ui/core";
-import {
-  makeStyles,
-  Tabs,
-  Tab,
-  Typography,
-  Box,
-  ButtonGroup,
-  Link,
-} from "@material-ui/core";
+
 import { Language, Facebook, Instagram } from "@material-ui/icons";
 import { experienceList } from "../../data";
-import IconBtn from "../../components/IconBtn";
+import IconButton from "../../components/IconButton.js";
 
 const StyledTabs = () => {
   const classes = useStyles();
@@ -67,7 +59,7 @@ const StyledTabs = () => {
           </Box>
           <Box>
             {elem.links.website && (
-              <IconBtn
+              <IconButton
                 icon={Language}
                 fontSize={28}
                 m={1}
@@ -75,7 +67,7 @@ const StyledTabs = () => {
               />
             )}
             {elem.links.facebook && (
-              <IconBtn
+              <IconButton
                 icon={Facebook}
                 fontSize={28}
                 m={1}
@@ -83,7 +75,7 @@ const StyledTabs = () => {
               />
             )}
             {elem.links.instagram && (
-              <IconBtn
+              <IconButton
                 icon={Instagram}
                 fontSize={28}
                 m={1}

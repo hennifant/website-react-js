@@ -2,12 +2,13 @@ import React from "react";
 import {
   makeStyles,
   Card as MuiCard,
-  CardActionArea,
   CardContent,
   CardMedia,
   Typography,
+  IconButton,
 } from "@material-ui/core";
 import { motion } from "framer-motion";
+import { Close } from "@material-ui/icons";
 
 const ExtendedCard = ({
   id,
@@ -29,48 +30,56 @@ const ExtendedCard = ({
         component={motion.div}
         layoutId={id}
       >
-        <CardActionArea>
-          <CardMedia
-            component={motion.div}
-            layoutId={`img-container-${id}`}
-            className={classes.media}
-            image={backgroundImage}
-            title={title}
+        <div style={{ position: "relative" }}>
+          <div>
+            <CardMedia
+              component={motion.div}
+              layoutId={`img-container-${id}`}
+              className={classes.media}
+              image={backgroundImage}
+              title={title}
+            >
+              <motion.img
+                layoutId={`front-img-${id}`}
+                className={classes.frontImage}
+                src={frontImage}
+                alt={title}
+              />
+            </CardMedia>
+            <CardContent>
+              <Typography
+                variant="h5"
+                className={classes.title}
+                component={motion.h5}
+                layoutId={`title-${id}`}
+              >
+                {title}
+              </Typography>
+              <Typography
+                variant="body2"
+                className={classes.overview}
+                component={motion.h5}
+                layoutId={`overview-${id}`}
+              >
+                {overview}
+              </Typography>
+              <Typography
+                variant="body2"
+                className={classes.technologies}
+                component={motion.h5}
+                layoutId={`technologies-${id}`}
+              >
+                {technologies.join(" · ")}
+              </Typography>
+            </CardContent>
+          </div>
+          <IconButton
+            className={classes.closeButton}
+            onClick={() => handleClose()}
           >
-            <motion.img
-              layoutId={`front-img-${id}`}
-              className={classes.frontImage}
-              src={frontImage}
-              alt={title}
-            />
-          </CardMedia>
-          <CardContent>
-            <Typography
-              variant="h5"
-              className={classes.title}
-              component={motion.h5}
-              layoutId={`title-${id}`}
-            >
-              {title}
-            </Typography>
-            <Typography
-              variant="body2"
-              className={classes.overview}
-              component={motion.h5}
-              layoutId={`overview-${id}`}
-            >
-              {overview}
-            </Typography>
-            <Typography
-              variant="body2"
-              className={classes.technologies}
-              component={motion.h5}
-              layoutId={`technologies-${id}`}
-            >
-              {/* {technologies.join(" · ")} */}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
+            <Close />
+          </IconButton>
+        </div>
       </MuiCard>
       <motion.div
         className={classes.container}
@@ -99,7 +108,6 @@ const useStyles = makeStyles((theme) => ({
     right: 0,
     top: 0,
     bottom: 0,
-    cursor: "pointer",
     backgroundColor: "rgba(0,0,0,0.1)",
     backdropFilter: "blur(1px)",
     opacity: 0,
@@ -114,20 +122,23 @@ const useStyles = makeStyles((theme) => ({
     width: "600px",
     height: "600px",
     boxShadow: theme.shadows[10],
-    //borderRadius: "11px",
-    //overflow: "visible",
     zIndex: "10000",
   },
   media: {
-    height: "100%",
+    height: "300px",
     width: "100%",
-    //borderRadius: "10px 10px 0 0",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "flex-start",
+    overflow: "hidden",
   },
   frontImage: {
     objectFit: "cover",
-    width: "100%",
+    width: "90%",
     height: "100%",
-    //transform: "scale(1.3)",
+    objectPosition: "center top",
+    boxShadow: theme.shadows[8],
+    marginTop: "10px",
   },
   title: {
     color: "rgb(30,30,30)",
@@ -143,6 +154,13 @@ const useStyles = makeStyles((theme) => ({
   technologies: {
     color: "rgb(120,120,120)",
     fontSize: "14px",
+  },
+  closeButton: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    margin: "2px",
+    color: "white",
   },
 }));
 

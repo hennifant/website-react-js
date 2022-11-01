@@ -2,7 +2,6 @@ import React from "react";
 import {
   makeStyles,
   Card as MuiCard,
-  CardActionArea,
   CardContent,
   CardMedia,
   Typography,
@@ -60,15 +59,9 @@ const Card = ({
       onMouseEnter={handleMouseEnterControls}
       onMouseLeave={handleMouseLeaveControls}
       onClick={() => onClick()}
-      transition={{
-        type: "spring",
-        stiffness: 80,
-        damping: 20,
-        delay: 0.45 * id,
-      }}
       {...rest}
     >
-      <CardActionArea>
+      <div>
         <CardMedia
           component={motion.div}
           layoutId={`img-container-${id}`}
@@ -109,7 +102,7 @@ const Card = ({
             {technologies.join(" · ")}
           </Typography>
         </CardContent>
-      </CardActionArea>
+      </div>
       <motion.div
         transition={{ delay: 0.15 }}
         variants={hoverVariants}
@@ -150,7 +143,7 @@ const Card = ({
 const useStyles = makeStyles((theme) => ({
   root: {
     position: "relative",
-    height: 400,
+    height: 350,
     overflow: "hidden",
     cursor: "pointer",
   },
@@ -158,14 +151,16 @@ const useStyles = makeStyles((theme) => ({
     height: 200,
     width: "100%",
     display: "flex",
-    alignItems: "center",
+    alignItems: "flex-start",
     justifyContent: "center",
+    overflow: "hidden",
   },
   frontImage: {
     objectFit: "cover",
-    width: "100%",
     height: "100%",
-    transform: "scale(1.2)",
+    objectPosition: "center top",
+    width: "90%",
+    boxShadow: theme.shadows[8],
   },
   title: {
     color: "rgb(30,30,30)",

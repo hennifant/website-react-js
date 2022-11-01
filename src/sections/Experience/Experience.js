@@ -7,7 +7,7 @@ const Experience = () => {
     <SectionContainer
       id="experience"
       title="Experience"
-      maxWidth="700"
+      maxWidth="sm"
       padding="120"
     >
       <Tabs />

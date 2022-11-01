@@ -1,7 +1,8 @@
 import React from "react";
-import HomeContainer from "../../containers/HomeContainer";
-import { Button, Typography } from "@material-ui/core";
+import { Button, Typography, makeStyles } from "@material-ui/core";
 import { motion } from "framer-motion";
+import { Link } from "react-scroll";
+import HomeContainer from "../../containers/HomeContainer";
 
 const container = {
   hidden: {},
@@ -14,14 +15,21 @@ const container = {
 };
 
 const typo = {
-  hidden: { opacity: 0, x: -10 },
+  hidden: { opacity: 0, x: 0 },
   visible: {
     x: 0,
     opacity: 1,
   },
 };
 
+const AnimatedLink = (props) => (
+  <motion.div variants={props.variants}>
+    <Link {...props} />
+  </motion.div>
+);
+
 const Home = () => {
+  const classes = useStyles();
   return (
     <HomeContainer id="home">
       <motion.div variants={container} initial="hidden" animate="visible">
@@ -30,7 +38,7 @@ const Home = () => {
           variants={typo}
           color="primary"
           variant="h5"
-          style={{ marginBottom: "6px" }}
+          style={{ marginBottom: "0px" }}
         />
         <Typography
           color="primary"
@@ -50,28 +58,59 @@ const Home = () => {
         <Typography variant="h2" color="initial">
           Hennifant
         </Typography>
-        <Typography variant="h3" color="initial">
+        <Typography
+          component={motion.p}
+          variants={typo}
+          variant="h2"
+          color="secondary"
+          className={classes.subTitle}
+        >
           I make websites and mobile Apps.
         </Typography>
-        <Typography variant="body1" color="initial">
-          Frontend web developer{" "}
+        <Typography
+          component={motion.p}
+          variants={typo}
+          variant="body2"
+          color="initial"
+          style={{ marginBottom: "0" }}
+        >
+          Frontend web developer.
         </Typography>
-        <Typography variant="body1" color="initial">
-          based in Wolfsburg, Germany{" "}
+        <Typography
+          component={motion.p}
+          variants={typo}
+          variant="body1"
+          color="initial"
+          style={{ marginBottom: "30px" }}
+        >
+          based in Wolfsburg, Germany
         </Typography>
         <Button
-          component={motion.p}
+          component={AnimatedLink}
+          to="contact"
           variants={typo}
           variant="outlined"
           color="primary"
           size="large"
         >
-          {" "}
           Get in touch
         </Button>
       </motion.div>
     </HomeContainer>
   );
 };
+
+const useStyles = makeStyles((theme) => ({
+  subTitle: {
+    marginBottom: "16px",
+    fontSize: "75px",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "45px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "35px",
+    },
+  },
+}));
 
 export default Home;

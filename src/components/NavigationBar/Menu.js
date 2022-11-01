@@ -3,7 +3,7 @@ import {
   Tab,
   Tabs,
   Button,
-  Hidden,
+  Link as MuiLink,
   makeStyles,
   withStyles,
 } from "@material-ui/core";
@@ -35,7 +35,7 @@ const smoothScrollProps = {
 };
 
 const AnimatedLink = (props) => (
-  <motion.div variants={props.variants}>
+  <motion.div>
     <Link {...props} />
   </motion.div>
 );
@@ -79,46 +79,38 @@ const Menu = () => {
       >
         <StyledTab
           component={AnimatedLink}
-          variants={button}
           to="about"
           label="About"
-          {...smoothScrollProps}
           onSetActive={() => spyHandleChange(0)}
           onSetInactive={() => spyHandleChange(null)}
         />
         <StyledTab
           component={AnimatedLink}
-          variants={button}
           to="experience"
           label="Experience"
-          {...smoothScrollProps}
           onSetActive={() => spyHandleChange(1)}
         />
         <StyledTab
           component={AnimatedLink}
-          variants={button}
           to="projects"
           label="Projects"
-          {...smoothScrollProps}
           onSetActive={() => spyHandleChange(2)}
         />
         <StyledTab
           component={AnimatedLink}
-          variants={button}
           to="contact"
           label="Contact"
-          {...smoothScrollProps}
           onSetActive={() => spyHandleChange(3)}
         />
       </StyledTabs>
       <motion.div variants={button}>
         <Button
-          component={motion.button}
-          variants={button}
+          component={MuiLink}
+          href="/resume.pdf"
+          target="_blank"
           variant="outlined"
           color="primary"
-          exact
-          className={classes.navMenuItem}
+          underline="none"
         >
           Resume
         </Button>
@@ -142,8 +134,11 @@ const useStyles = makeStyles((theme) => ({
 
 const StyledTab = withStyles((theme) => ({
   root: {
-    // minWidth: 100,
-    // marginRight: theme.spacing(1),
+    transition: ".2s",
+    minWidth: 120,
+    "&:hover": {
+      color: theme.palette.text.primary,
+    },
   },
 }))((props) => <Tab disableRipple {...props} />);
 

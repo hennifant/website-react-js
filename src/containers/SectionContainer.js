@@ -51,7 +51,7 @@ const SectionContainer = ({
           }}
           className={classes.titleContainer}
         >
-          <Divider width="40px" />
+          <Divider width="20%" />
           <Typography variant="h4" color="initial" className={classes.title}>
             {title}
           </Typography>
@@ -89,6 +89,7 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(8, 0),
     display: "flex",
     alignItems: "center",
+    maxWidth: "100%",
   },
   title: {
     margin: theme.spacing(0, 4),

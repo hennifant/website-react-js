@@ -1,15 +1,31 @@
 import React from "react";
 import SectionContainer from "../../containers/SectionContainer";
 import Skills from "../../components/Skills";
-import { Grid, Typography, makeStyles, Box } from "@material-ui/core";
+import {
+  Grid,
+  Typography,
+  makeStyles,
+  Box,
+  useTheme,
+  useMediaQuery,
+} from "@material-ui/core";
 import Avatar from "../../components/Avatar";
 import { AboutDesc } from "../../data";
 
 const About = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    <SectionContainer id="about" title="About" maxWidth="1000">
-      <Grid container spacing={6} alignItems="center">
+    <SectionContainer id="about" title="About" maxWidth="md">
+      <Grid container spacing={0} alignItems="center" style={{ width: "100%" }}>
+        {isMobile && (
+          <Grid item xs={12} md={5} className={classes.gridItemWrapper}>
+            <Box mb={6}>
+              <Avatar />
+            </Box>
+          </Grid>
+        )}
         <Grid
           item
           xs={12}
@@ -22,9 +38,11 @@ const About = () => {
           </Box>
           <Skills />
         </Grid>
-        <Grid item xs={12} md={5} className={classes.gridItemWrapper}>
-          <Avatar />
-        </Grid>
+        {!isMobile && (
+          <Grid item xs={12} md={5} className={classes.gridItemWrapper}>
+            <Avatar />
+          </Grid>
+        )}
       </Grid>
     </SectionContainer>
   );

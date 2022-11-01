@@ -19,12 +19,7 @@ const MessageBox = () => {
   const SendEmail = (object) => {
     setSending(true);
     emailjs
-      .send(
-        "service_nva6v0x",
-        "template_47fdyh7",
-        object,
-        "user_qT3we7KxrmdHKOFJe28hB"
-      )
+      .send("service_809znjo", "template_p1fqa3g", object, "7JphYMzbbhBQ_vEyRB")
       .then(
         (result) => {
           setSendEmailSuccess(true);
@@ -42,11 +37,11 @@ const MessageBox = () => {
       message: "",
     },
     validationSchema: Yup.object({
-      name: Yup.string().required("Name is required"),
-      email: Yup.string()
-        .email("Email adress is not valid")
-        .required("Email adress is required"),
-      message: Yup.string().required("message is required"),
+      //name: Yup.string().required("Name is required"),
+      //email: Yup.string()
+      //  .email("Email adress is not valid")
+      //  .required("Email adress is required"),
+      //message: Yup.string().required("message is required"),
     }),
     onSubmit: (values) => {
       SendEmail(values);
@@ -59,70 +54,64 @@ const MessageBox = () => {
     <Box overflow="hidden" style={{ position: "relative", minHeight: "300px" }}>
       <AnimatePresence>
         {!sendEmailSuccess && (
-          <motion.div
-            initial={{ y: 0 }}
-            exit={{ y: [0, 150, 150, -600] }}
-            transition={{ duration: 0.7, times: [0, 0.45, 0.7, 1] }}
-          >
-            <form className={classes.form} onSubmit={formik.handleSubmit}>
-              <TextField
-                error={Boolean(formik.touched.name && formik.errors.name)}
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                value={formik.values.name}
-                helperText={formik.touched.name && formik.errors.name}
-                variant="filled"
-                margin="normal"
-                type="text"
+          <form className={classes.form} onSubmit={formik.handleSubmit}>
+            <TextField
+              error={Boolean(formik.touched.name && formik.errors.name)}
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.name}
+              helperText={formik.touched.name && formik.errors.name}
+              variant="filled"
+              margin="normal"
+              type="text"
+              fullWidth
+              id="name"
+              label="Full name"
+              name="name"
+            />
+            <TextField
+              error={Boolean(formik.touched.email && formik.errors.email)}
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.email}
+              helperText={formik.touched.email && formik.errors.email}
+              variant="filled"
+              type="email"
+              margin="normal"
+              fullWidth
+              id="email"
+              label="Email adress"
+              name="email"
+            />
+            <TextField
+              error={Boolean(formik.touched.message && formik.errors.message)}
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.message}
+              helperText={formik.touched.message && formik.errors.message}
+              variant="filled"
+              margin="normal"
+              fullWidth
+              name="message"
+              label="Message"
+              type="text"
+              id="message"
+              multiline
+              minRows={5}
+            />
+            <Box display="flex" justifyContent="center" mt={2}>
+              <Button
+                className={classes.submitBtn}
+                type="submit"
                 fullWidth
-                id="name"
-                label="Full name"
-                name="name"
-              />
-              <TextField
-                error={Boolean(formik.touched.email && formik.errors.email)}
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                value={formik.values.email}
-                helperText={formik.touched.email && formik.errors.email}
-                variant="filled"
-                type="email"
-                margin="normal"
-                fullWidth
-                id="email"
-                label="Email adress"
-                name="email"
-              />
-              <TextField
-                error={Boolean(formik.touched.message && formik.errors.message)}
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                value={formik.values.message}
-                helperText={formik.touched.message && formik.errors.message}
-                variant="filled"
-                margin="normal"
-                fullWidth
-                name="message"
-                label="Message"
-                type="text"
-                id="message"
-                multiline
-                minRows={5}
-              />
-              <Box display="flex" justifyContent="center" mt={2}>
-                <Button
-                  className={classes.submitBtn}
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  disabled={sending}
-                >
-                  Send message
-                </Button>
-              </Box>
-            </form>
-          </motion.div>
+                variant="contained"
+                color="primary"
+                disabled={sending}
+              >
+                Send message
+              </Button>
+            </Box>
+          </form>
         )}
       </AnimatePresence>
       <AnimatePresence>

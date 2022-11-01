@@ -7,6 +7,7 @@ import {
   Typography,
   Icon,
   Box,
+  rgbToHex,
 } from "@material-ui/core";
 import { motion, useAnimation } from "framer-motion";
 import { ArrowDownward } from "@material-ui/icons";
@@ -76,7 +77,14 @@ const Card = ({
             alt={title}
           />
         </CardMedia>
-        <CardContent>
+        <CardContent
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            height: "100%",
+            justifyContent: "space-between",
+          }}
+        >
           <Typography
             variant="h5"
             className={classes.title}
@@ -90,6 +98,7 @@ const Card = ({
             className={classes.overview}
             component={motion.h5}
             layoutId={`overview-${id}`}
+            style={{ flexGrow: 2 }}
           >
             {overview}
           </Typography>
@@ -98,6 +107,7 @@ const Card = ({
             className={classes.technologies}
             component={motion.h5}
             layoutId={`technologies-${id}`}
+            color="primary"
           >
             {technologies.join(" · ")}
           </Typography>
@@ -146,6 +156,7 @@ const useStyles = makeStyles((theme) => ({
     height: 350,
     overflow: "hidden",
     cursor: "pointer",
+    backgroundColor: theme.backgroundSecondary,
   },
   media: {
     height: 200,
@@ -156,25 +167,22 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
   },
   frontImage: {
+    marginTop: "20px",
     objectFit: "cover",
-    height: "100%",
     objectPosition: "center top",
     width: "90%",
     boxShadow: theme.shadows[8],
   },
   title: {
-    color: "rgb(30,30,30)",
     fontSize: "20px",
     fontWeight: 700,
     marginBottom: theme.spacing(1),
   },
   overview: {
-    color: "rgb(30,30,30)",
     fontSize: "14px",
     marginBottom: theme.spacing(1),
   },
   technologies: {
-    color: "rgb(120,120,120)",
     fontSize: "14px",
   },
   hover: {

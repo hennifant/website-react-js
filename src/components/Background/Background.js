@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { useMediaQuery } from "@material-ui/core";
 
 const Background = () => {
-  const classes = useStyles();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobileSm = useMediaQuery(theme.breakpoints.down("xs"));
+  const classes = useStyles(isMobile, isMobileSm);
   const [delay, setDelay] = useState(true);
   useEffect(() => {
     setTimeout(() => {
@@ -29,7 +33,7 @@ const Background = () => {
               title="background"
               src=""
               frameborder="0"
-              width="100%"
+              className={classes.iframe}
               height="100%"
             ></iframe>
             <div className={classes.hideLogo} />
@@ -45,12 +49,14 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     height: "100vh",
     width: "100%",
+    overflow: "hidden",
   },
   iframe: {
     position: "absolute",
     top: 0,
-    right: 0,
+    right: (props) => (props.isMobileSm ? "-220px" : 0),
     width: "100%",
+    maxWidth: (props) => (props.isMobile ? "400px" : "600px"),
   },
   wrapper: {
     position: "absolute",

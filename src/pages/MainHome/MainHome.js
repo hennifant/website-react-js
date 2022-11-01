@@ -5,8 +5,7 @@ import About from "../../sections/About";
 import Experience from "../../sections/Experience";
 import Projects from "../../sections/Projects";
 import Contact from "../../sections/Contact";
-
-// import Background from "../../components/Background/Background.js";
+import Background from "../../components/Background/Background.js";
 
 const MainHome = () => {
   return (
@@ -24,7 +23,7 @@ const MainHome = () => {
       <Experience />
       <Projects />
       <Contact />
-      {/*<Background /> */}
+      <Background />
     </motion.main>
   );
 };

@@ -24,7 +24,7 @@ const typo = {
 
 const AnimatedLink = (props) => (
   <motion.div variants={props.variants}>
-    <Link {...props} />
+    <Link spy smooth offset={0} duration={500} {...props} />
   </motion.div>
 );
 

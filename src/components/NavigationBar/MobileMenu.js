@@ -6,11 +6,10 @@ import {
   Button,
   Divider,
   ListItem,
-  ListItemIcon,
-  ListItemText,
   Link as MuiLink,
 } from "@material-ui/core";
 import { Link } from "react-scroll";
+import DarkModeSwitcher from "../DarkModeSwitcher";
 
 const MobileMenu = ({ open, onClose, onOpen }) => {
   const classes = useStyles();
@@ -53,7 +52,7 @@ const MobileMenu = ({ open, onClose, onOpen }) => {
           <ListItem {...listItemProps} to="contact">
             Contact
           </ListItem>
-          <ListItem className={classes.btnContainer}>
+          <ListItem className={classes.buttonContainer}>
             <Button
               component={MuiLink}
               href="/resume.pdf"
@@ -64,6 +63,9 @@ const MobileMenu = ({ open, onClose, onOpen }) => {
             >
               Resume
             </Button>
+          </ListItem>
+          <ListItem className={classes.buttonContainer}>
+            <DarkModeSwitcher />
           </ListItem>
           <Divider />
         </List>
@@ -91,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "rgb(80,80,80)",
     },
   },
-  btnContainer: {
+  buttonContainer: {
     display: "flex",
     justifyContent: "center",
     marginTop: theme.spacing(1),

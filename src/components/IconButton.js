@@ -11,7 +11,7 @@ const IconButton = ({ icon: Icon, href, fontSize, ...rest }) => {
       component={motion.div}
       whileHover={{ scale: 1.1 }}
     >
-      <Link href={href} target="_blank">
+      <Link href={href} s>
         <Icon className={classes.icon} />
       </Link>
     </Box>

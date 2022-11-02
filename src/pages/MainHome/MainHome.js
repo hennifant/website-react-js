@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useMediaQuery, useTheme } from "@material-ui/core";
 import Home from "../../sections/Home";
 import About from "../../sections/About";
 import Experience from "../../sections/Experience";
@@ -8,6 +9,8 @@ import Contact from "../../sections/Contact";
 import Background from "../../components/Background/Background.js";
 
 const MainHome = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <motion.main
       initial={{ opacity: 0 }}
@@ -23,7 +26,7 @@ const MainHome = () => {
       <Experience />
       <Projects />
       <Contact />
-      <Background />
+      {!isMobile && <Background />}
     </motion.main>
   );
 };

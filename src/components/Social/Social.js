@@ -1,14 +1,30 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { makeStyles } from "@material-ui/core";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { LinkedIn, Instagram, GitHub, Email } from "@material-ui/icons";
 import IconButton from "../IconButton";
-import themeContext from "../../contexts/themeContext";
 import DarkModeSwitcher from "../DarkModeSwitcher";
+import loaderContext from "../../contexts/loaderContext";
 
 const Social = ({ mobile }) => {
-  const { isDarkMode, setIsDarkMode } = useContext(themeContext);
   const classes = useStyles();
+  const { isLoading } = useContext(loaderContext);
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (!isLoading) {
+      controls.start((i) => ({
+        opacity: 1,
+        y: 0,
+        transition: {
+          delay: 1.8 + i * 0.1,
+        },
+      }));
+    } else {
+      controls.start({ opacity: 0, y: 0 });
+    }
+  }, [isLoading, controls]);
+
   if (mobile) {
     return (
       <div className={classes.mobileWrapper}>
@@ -25,22 +41,26 @@ const Social = ({ mobile }) => {
     );
   } else {
     return (
-      <motion.div
-        initial={{ y: "100vh" }}
-        animate={{ y: 0 }}
-        transition={{ delay: 3 }}
-        className={classes.wrapper}
-      >
-        <IconButton icon={GitHub} m={1} href="https://github.com/hennifant" />
-        <IconButton
-          icon={Instagram}
-          m={1}
-          href="https://www.instagram.com/hennifantus/"
-        />
-
-        <IconButton icon={LinkedIn} m={1} href="https://www.linkedin.com/" />
-        <IconButton icon={Email} m={1} href="mailto:hennifantus@gmail.com" />
-        <DarkModeSwitcher />
+      <motion.div className={classes.wrapper}>
+        <motion.div animate={controls} custom={0}>
+          <IconButton icon={GitHub} m={1} href="https://github.com/hennifant" />
+        </motion.div>
+        <motion.div animate={controls} custom={1}>
+          <IconButton
+            icon={Instagram}
+            m={1}
+            href="https://www.instagram.com/hennifantus/"
+          />
+        </motion.div>
+        <motion.div animate={controls} custom={2}>
+          <IconButton icon={LinkedIn} m={1} href="https://www.linkedin.com/" />
+        </motion.div>
+        <motion.div animate={controls} custom={3}>
+          <IconButton icon={Email} m={1} href="mailto:hennifantus@gmail.com" />
+        </motion.div>
+        <motion.div animate={controls} custom={4}>
+          <DarkModeSwitcher />
+        </motion.div>
       </motion.div>
     );
   }

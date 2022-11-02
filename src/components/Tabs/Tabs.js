@@ -5,7 +5,6 @@ import {
   Tab,
   Typography,
   Box,
-  ButtonGroup,
   Link,
   useTheme,
   useMediaQuery,
@@ -13,10 +12,12 @@ import {
 
 import { Language, Facebook, Instagram } from "@material-ui/icons";
 import { experienceList } from "../../data";
+import { useTranslation } from "react-i18next";
 import IconButton from "../../components/IconButton.js";
 
 const StyledTabs = () => {
   const theme = useTheme();
+  const { t } = useTranslation();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = useStyles({ isMobile });
   const [value, setValue] = useState(0);
@@ -36,11 +37,11 @@ const StyledTabs = () => {
         centered
       >
         {experienceList.map((elem) => (
-          <Tab label={elem.company} />
+          <Tab label={elem.company} key={elem.id} />
         ))}
       </Tabs>
       {experienceList.map((elem) => (
-        <TabPanel value={value} index={elem.id}>
+        <TabPanel value={value} index={elem.id} key={elem.id}>
           <Box mb={4}>
             <Typography variant="h5">
               {elem.job} @{" "}
@@ -53,12 +54,12 @@ const StyledTabs = () => {
               </Link>
             </Typography>
             <Typography variant="body2" color="textSecondary" fontSize="14">
-              {`${elem.duration.from} - ${elem.duration.to}`}{" "}
+              {t(`experience_${elem.id}_duration`)}
             </Typography>
           </Box>
           <Box mb={4}>
             <Typography variant="body1" color="textPrimary">
-              {elem.overview}
+              {t(`experience_${elem.id}_duration`)}
             </Typography>
           </Box>
           <Box>
@@ -107,7 +108,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={3} minHeight={isMobile ? 0 : "350px"}>
-          <Typography>{children}</Typography>
+          <div>{children}</div>
         </Box>
       )}
     </div>

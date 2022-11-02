@@ -1,18 +1,14 @@
-import React, { useEffect, useState } from "react";
-import {
-  AnimatePresence,
-  AnimateSharedLayout,
-  motion,
-  useAnimation,
-} from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import React, { useState } from "react";
+import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import { Grid, makeStyles } from "@material-ui/core";
+import { projectList } from "../../data";
+import { useTranslation } from "react-i18next";
 import Card from "./Card";
 import ExtendedCard from "./ExtendedCard";
-import { projectList } from "../../data";
 
 const ProjectsGallery = () => {
   const classes = useStyles();
+  const { t } = useTranslation();
   const [selectedId, setSelectedId] = useState(null);
   const getSelected = (id) => projectList.find((elem) => elem.id === id);
   return (
@@ -30,7 +26,7 @@ const ProjectsGallery = () => {
             <Card
               id={item.id}
               title={item.title}
-              overview={item.overview}
+              overview={t(`projects_${item.id}_overview`)}
               backgroundImage={item.backgroundImage}
               frontImage={item.frontImage}
               technologies={item.technologies}
@@ -45,9 +41,9 @@ const ProjectsGallery = () => {
         {selectedId && (
           <ExtendedCard
             key={selectedId}
-            id={getSelected(selectedId).id}
+            id={selectedId}
             title={getSelected(selectedId).title}
-            overview={getSelected(selectedId).overview}
+            overview={t(`projects_${selectedId}_extended_overview`)}
             backgroundImage={getSelected(selectedId).backgroundImage}
             frontImage={getSelected(selectedId).frontImage}
             technologies={getSelected(selectedId).technologies}

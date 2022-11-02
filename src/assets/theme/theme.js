@@ -54,7 +54,7 @@ const darkTheme = createTheme({
       disabledBackground: "rgb(150,150,150)",
     },
   },
-  backgroundSecondary: "rgb(43,43,43)",
+  logoColor: "#fff",
   ...baseTheme,
 });
 
@@ -69,7 +69,7 @@ const lightTheme = createTheme({
     },
     secondary: {
       main: "#6F4C5B",
-      contrastText: "#000",
+      contrastText: "rgb(230,230,230)",
     },
     text: {
       primary: "#000",
@@ -82,8 +82,9 @@ const lightTheme = createTheme({
   },
   backgroundSecondary: {
     bg: "#6F4C5B",
-    text: "#fff",
+    text: "rgb(230,230,230)",
   },
+  logoColor: "#6F4C5B",
   ...baseTheme,
 });
 

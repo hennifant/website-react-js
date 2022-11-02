@@ -10,12 +10,14 @@ import { useFormik } from "formik";
 import emailjs from "emailjs-com";
 import * as Yup from "yup";
 import { AnimatePresence, motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import Check from "../../assets/images/Check";
 
 const MessageBox = () => {
   const classes = useStyles();
   const [sending, setSending] = useState(false);
   const [sendEmailSuccess, setSendEmailSuccess] = useState(false);
+  const { t } = useTranslation();
   const SendEmail = (object) => {
     setSending(true);
     emailjs
@@ -37,11 +39,11 @@ const MessageBox = () => {
       message: "",
     },
     validationSchema: Yup.object({
-      //name: Yup.string().required("Name is required"),
-      //email: Yup.string()
-      //  .email("Email adress is not valid")
-      //  .required("Email adress is required"),
-      //message: Yup.string().required("message is required"),
+      name: Yup.string().required("Name is required"),
+      email: Yup.string()
+        .email("Email adress is not valid")
+        .required("Email adress is required"),
+      message: Yup.string().required("message is required"),
     }),
     onSubmit: (values) => {
       SendEmail(values);
@@ -66,7 +68,7 @@ const MessageBox = () => {
               type="text"
               fullWidth
               id="name"
-              label="Full name"
+              label={t("contact_full_name")}
               name="name"
             />
             <TextField
@@ -80,7 +82,7 @@ const MessageBox = () => {
               margin="normal"
               fullWidth
               id="email"
-              label="Email adress"
+              label={t("contact_email")}
               name="email"
             />
             <TextField
@@ -108,7 +110,7 @@ const MessageBox = () => {
                 color="primary"
                 disabled={sending}
               >
-                Send message
+                {t("contact_btn")}
               </Button>
             </Box>
           </form>

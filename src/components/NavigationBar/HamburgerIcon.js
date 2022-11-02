@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core";
 import { motion, useAnimation } from "framer-motion";
 
@@ -11,7 +11,7 @@ const HamburgerIcon = ({ isOpen, ...rest }) => {
     } else {
       controls.start("initial");
     }
-  }, [isOpen]);
+  }, [isOpen, controls]);
   return (
     <motion.div className={classes.container} {...rest}>
       <motion.div

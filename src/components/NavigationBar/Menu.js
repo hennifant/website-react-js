@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   Tab,
   Tabs,
@@ -7,26 +7,12 @@ import {
   makeStyles,
   withStyles,
 } from "@material-ui/core";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { Link, Events } from "react-scroll";
+import LanguageSelector from "./LanguageSelector.js";
+import LoaderContext from "../../contexts/loaderContext";
+import { useTranslation } from "react-i18next";
 
-const container = {
-  hidden: {},
-  visible: {
-    transition: {
-      delayChildren: 0.3,
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const button = {
-  hidden: { opacity: 0, y: -5 },
-  visible: {
-    y: 0,
-    opacity: 1,
-  },
-};
 const smoothScrollProps = {
   spy: true,
   smooth: true,
@@ -34,16 +20,19 @@ const smoothScrollProps = {
   duration: 500,
 };
 
-const AnimatedLink = (props) => (
-  <motion.div>
-    <Link {...props} />
+const AnimatedLink = React.forwardRef((props, ref) => (
+  <motion.div ref={ref} custom={props.custom} animate={props.animate}>
+    <Link {...smoothScrollProps} {...props} />
   </motion.div>
-);
+));
 
 const Menu = () => {
   const classes = useStyles();
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
+  const { isLoading } = useContext(LoaderContext);
+  const controls = useAnimation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     Events.scrollEvent.register("begin", (to, element) => {
@@ -54,21 +43,28 @@ const Menu = () => {
       setIsScrolling(false);
     });
   });
+  useEffect(() => {
+    if (!isLoading) {
+      controls.start((i) => ({
+        y: 0,
+        opacity: 1,
+        transition: { delay: i * 0.1 + 0.3 },
+      }));
+    } else {
+      controls.start({ opacity: 0, y: -5 });
+    }
+  }, [isLoading, controls]);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   const spyHandleChange = (index) => {
-    if (!isScrolling) {
+    if (!isScrolling || value === 0) {
       setValue(index);
     }
   };
   return (
-    <motion.div
-      className={classes.wrapper}
-      variants={container}
-      initial="hidden"
-      animate="visible"
-    >
+    <div className={classes.wrapper}>
       <StyledTabs
         className={classes.tabs}
         value={value}
@@ -79,31 +75,39 @@ const Menu = () => {
       >
         <StyledTab
           component={AnimatedLink}
+          custom={0}
+          animate={controls}
           to="about"
-          label="About"
+          label={t("menu_about")}
           onSetActive={() => spyHandleChange(0)}
           onSetInactive={() => spyHandleChange(null)}
         />
         <StyledTab
           component={AnimatedLink}
+          custom={1}
+          animate={controls}
           to="experience"
-          label="Experience"
+          label={t("menu_experience")}
           onSetActive={() => spyHandleChange(1)}
         />
         <StyledTab
           component={AnimatedLink}
+          custom={2}
+          animate={controls}
           to="projects"
-          label="Projects"
+          label={t("menu_projects")}
           onSetActive={() => spyHandleChange(2)}
         />
         <StyledTab
           component={AnimatedLink}
+          custom={3}
+          animate={controls}
           to="contact"
-          label="Contact"
+          label={t("menu_contact")}
           onSetActive={() => spyHandleChange(3)}
         />
       </StyledTabs>
-      <motion.div variants={button}>
+      <motion.div custom={4} animate={controls}>
         <Button
           component={MuiLink}
           href="/resume.pdf"
@@ -112,10 +116,13 @@ const Menu = () => {
           color="primary"
           underline="none"
         >
-          Resume
+          {t("menu_resume")}
         </Button>
       </motion.div>
-    </motion.div>
+      <motion.div custom={5} animate={controls}>
+        <LanguageSelector style={{ marginLeft: "32px" }} />
+      </motion.div>
+    </div>
   );
 };
 

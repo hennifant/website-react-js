@@ -1,4 +1,3 @@
-const AboutDesc = "Hello there, my name is Hennifant.";
 const skillsList = [
   {
     title: "React JS",
@@ -13,8 +12,6 @@ const projectList = [
   {
     id: 1,
     title: "One",
-    overview:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita incidunt ab recusandae minus sequi. Nostrum debitis aliquam et recusandae ducimus.",
     technologies: ["React JS", "Node JS", "MongoDB"],
     backgroundImage:
       "https://cdn.cbeditz.com/cbeditz/preview/black-red-gradient-background-wallpaper-74-11614352798fbqrv1wpuv.jpg",
@@ -24,8 +21,7 @@ const projectList = [
   {
     id: 2,
     title: "Two",
-    overview:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita incidunt ab recusandae minus sequi. Nostrum debitis aliquam et recusandae ducimus.",
+
     technologies: ["React JS", "Node JS", "MongoDB"],
     backgroundImage:
       "https://img.freepik.com/free-vector/dark-gradient-background-with-copy-space_53876-99548.jpg?size=626&ext=jpg&ga=GA1.2.2102900112.1628985600",
@@ -35,8 +31,7 @@ const projectList = [
   {
     id: 3,
     title: "Three",
-    overview:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita incidunt ab recusandae minus sequi. Nostrum debitis aliquam et recusandae ducimus.",
+
     technologies: ["React JS", "Node JS", "MongoDB"],
     backgroundImage:
       "https://media.istockphoto.com/vectors/abstract-purple-vector-background-with-stripes-vector-id972475894?k=6&m=972475894&s=612x612&w=0&h=99AirGMOb64N2-1ZSMYRjEBp2USrAdzXUGzQMh5o6Js=",
@@ -49,18 +44,12 @@ const experienceList = [
   {
     id: 0,
     company: "abc",
-    job: "def",
-    overview: " ghi",
     links: {
       website: "https://www.google.com",
       facebook: "https://www.facebook.com/",
       instagram: "https://www.instagram.com",
     },
-    duration: {
-      from: "date",
-      to: "now",
-    },
   },
 ];
 
-export { AboutDesc, skillsList, projectList, experienceList };
+export { skillsList, projectList, experienceList };

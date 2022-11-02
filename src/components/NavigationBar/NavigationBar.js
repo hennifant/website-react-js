@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   makeStyles,
   useTheme,
@@ -9,12 +9,15 @@ import {
 } from "@material-ui/core";
 import Logo from "./Logo";
 import Menu from "./Menu";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import MobileMenu from "./MobileMenu";
 import HamburgerIcon from "./HamburgerIcon";
+import loaderContext from "../../contexts/loaderContext";
 
 const NavigationBar = () => {
   const isMobile = useMediaQuery("(max-width:700px)");
+  const { isLoading } = useContext(loaderContext);
+  const controls = useAnimation();
   const theme = useTheme();
   const [scroll, setScroll] = useState(false);
   const [mobileNavIsOpen, setMobileNavIsOpen] = useState(false);
@@ -25,18 +28,24 @@ const NavigationBar = () => {
     initial: { height: isMobile ? 70 : 100, boxShadow: theme.shadows[0] },
     scrolled: { height: theme.navbarHeight, boxShadow: theme.shadows[10] },
   };
+  useEffect(() => {
+    if (!isLoading) {
+      controls.start({
+        y: 0,
+        transition: {
+          delay: 0.05,
+          type: "spring",
+          stiffness: 260,
+          damping: 20,
+        },
+      });
+    } else {
+      controls.start({ y: -100 });
+    }
+  }, [isLoading, controls]);
 
   return (
-    <motion.div
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{
-        delay: 0.2,
-        type: "spring",
-        stiffness: 260,
-        damping: 20,
-      }}
-    >
+    <motion.div animate={controls}>
       <AppBar
         position="fixed"
         elevation={0}
@@ -86,6 +95,7 @@ const useStyles = makeStyles((theme) => ({
   },
   toolbar: {
     justifyContent: "space-between",
+    alignItems: "center",
     padding: (props) =>
       props.isMobile ? theme.spacing(0, 2) : theme.spacing(0, 6),
   },

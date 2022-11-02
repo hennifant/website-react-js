@@ -12,7 +12,7 @@ const IconButton = ({ icon: Icon, href, fontSize, ...rest }) => {
       whileHover={{ scale: 1.1 }}
     >
       <Link href={href} target="_blank">
-        <Icon className={classes.icon} color="textSecondary" />
+        <Icon className={classes.icon} />
       </Link>
     </Box>
   );

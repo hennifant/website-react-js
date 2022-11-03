@@ -42,23 +42,43 @@ const Social = ({ mobile }) => {
   } else {
     return (
       <motion.div className={classes.wrapper}>
-        <motion.div animate={controls} custom={0}>
+        <motion.div
+          animate={controls}
+          custom={0}
+          className={classes.socialIcon}
+        >
           <IconButton icon={GitHub} m={1} href="https://github.com/hennifant" />
         </motion.div>
-        <motion.div animate={controls} custom={1}>
+        <motion.div
+          animate={controls}
+          custom={1}
+          className={classes.socialIcon}
+        >
           <IconButton
             icon={Instagram}
             m={1}
             href="https://www.instagram.com/hennifantus/"
           />
         </motion.div>
-        <motion.div animate={controls} custom={2}>
+        <motion.div
+          animate={controls}
+          custom={2}
+          className={classes.socialIcon}
+        >
           <IconButton icon={LinkedIn} m={1} href="https://www.linkedin.com/" />
         </motion.div>
-        <motion.div animate={controls} custom={3}>
+        <motion.div
+          animate={controls}
+          custom={3}
+          className={classes.socialIcon}
+        >
           <IconButton icon={Email} m={1} href="mailto:hennifantus@gmail.com" />
         </motion.div>
-        <motion.div animate={controls} custom={4}>
+        <motion.div
+          animate={controls}
+          custom={4}
+          className={classes.socialIcon}
+        >
           <DarkModeSwitcher />
         </motion.div>
       </motion.div>
@@ -67,6 +87,9 @@ const Social = ({ mobile }) => {
 };
 
 const useStyles = makeStyles((theme) => ({
+  socialIcon: {
+    marginBottom: "5px",
+  },
   wrapper: {
     display: "flex",
     flexDirection: "column",

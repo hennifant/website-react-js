@@ -43,7 +43,7 @@ const ProjectsGallery = () => {
             key={selectedId}
             id={selectedId}
             title={getSelected(selectedId).title}
-            overview={t(`projects_${selectedId}_extended_overview`)}
+            overview={t(`projects_$(selectedId)_extended_overview`)}
             backgroundImage={getSelected(selectedId).backgroundImage}
             frontImage={getSelected(selectedId).frontImage}
             technologies={getSelected(selectedId).technologies}

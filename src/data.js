@@ -7,11 +7,12 @@ const skillsList = [
   { title: "Express JS ", value: 70 },
   { title: "HTML", value: 70 },
   { title: "CSS", value: 80 },
+  { title: "TypeScript", value: 50 },
 ];
 const projectList = [
   {
     id: 1,
-    title: "One",
+    title: "AppQuarium",
     technologies: ["React JS", "Node JS", "MongoDB"],
     backgroundImage:
       "https://cdn.cbeditz.com/cbeditz/preview/black-red-gradient-background-wallpaper-74-11614352798fbqrv1wpuv.jpg",

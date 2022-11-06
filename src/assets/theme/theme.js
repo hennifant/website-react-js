@@ -61,7 +61,7 @@ const darkTheme = createTheme({
 const lightTheme = createTheme({
   palette: {
     background: {
-      default: "#DEBA9D ",
+      default: "white",
     },
     primary: {
       main: "#9E7777",

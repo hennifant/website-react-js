@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     display: "inline",
     width: (props) => (props.fullWidth ? "100%" : props.width),
     height: "1px",
-    backgroundColor: "red",
+    backgroundColor: "#000000",
   },
 }));
 

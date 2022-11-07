@@ -112,7 +112,7 @@ const Menu = () => {
           component={MuiLink}
           href="/resume.pdf"
           variant="outlined"
-          color="primary"
+          color="secondary"
           underline="none"
         >
           {t("menu_resume")}

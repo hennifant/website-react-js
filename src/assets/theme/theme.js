@@ -24,7 +24,7 @@ const baseTheme = {
         letterSpacing: "2px",
         borderRadius: 0,
         "&:hover": {
-          color: "rgb(230,230,230)",
+          color: "#1A1A1A",
           backgroundColor: "inherit",
         },
       },
@@ -35,7 +35,7 @@ const baseTheme = {
 const darkTheme = createTheme({
   palette: {
     background: {
-      default: "#1A1A1A ",
+      default: "#1A1A1A",
     },
     primary: {
       main: "#FF4C29",
@@ -61,28 +61,28 @@ const darkTheme = createTheme({
 const lightTheme = createTheme({
   palette: {
     background: {
-      default: "white",
+      default: "#A0AECD",
     },
     primary: {
-      main: "#9E7777",
+      main: "#fff",
       contrastText: "#000",
     },
     secondary: {
-      main: "#6F4C5B",
-      contrastText: "rgb(230,230,230)",
+      main: "#000",
+      contrastText: "#E6E6E6",
     },
     text: {
       primary: "#000",
-      secondary: "rgb(30,30,30)",
+      secondary: "#000",
     },
     action: {
-      disabled: "rgb(70,70,70)",
-      disabledBackground: "rgb(150,150,150)",
+      disabled: "#464646",
+      disabledBackground: "#969696",
     },
   },
   backgroundSecondary: {
     bg: "#6F4C5B",
-    text: "rgb(230,230,230)",
+    text: "#E6E6E6",
   },
   logoColor: "#6F4C5B",
   ...baseTheme,

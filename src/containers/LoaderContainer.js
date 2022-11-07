@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#FF4C29",
+    backgroundColor: theme.palette.background.default,
     zIndex: 10000,
   },
   content: {
